@@ -1,6 +1,6 @@
 <template>
   <section id="content">
-    <h2 class="subheader">Página de pruebas</h2>
+    <h2 class="subheader">Pággina de pruebas</h2>
     <h3>{{id_desde_url}}</h3>
     <button @click="actualizarNombre()">Actualizar nombre</button>
     <h4>{{nombre}}</h4>
