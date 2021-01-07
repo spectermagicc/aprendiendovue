@@ -90,7 +90,8 @@ body {
     transition: 300ms all;
 }
 
-#menu a:hover {
+#menu a:hover,
+#menu .active {
     color: #09a330;
 }
 

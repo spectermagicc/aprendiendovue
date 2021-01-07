@@ -7,6 +7,7 @@ import HelloWorld from './components/HelloWorld.vue';
 import Blog from './components/Blog.vue';
 import Formulario from './components/Formulario.vue';
 import Pagina from './components/Pagina.vue';
+import Error from './components/Error.vue';
 
 
 
@@ -24,6 +25,8 @@ const routes = [
     { path: '/blog', component: Blog },
     { path: '/pagina/:id?', name: 'pagina', component: Pagina },
     { path: '/formulario', component: Formulario },
+    { path: '*', component: Error }, //cargará esta ruta cuando no coincida con las anteriores
+
 ];
 
 const router = new VueRouter({

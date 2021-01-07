@@ -3,6 +3,8 @@
     <h2 class="subheader">Página de pruebas</h2>
     <h3>{{id_desde_url}}</h3>
     <button @click="actualizarNombre()">Actualizar nombre</button>
+        <button @click="redirigirBlog()">Redirigir al Blog</button>
+
     <h4>{{nombre}}</h4>
   </section>
 </template>
@@ -39,9 +41,12 @@ export default {
     },
     //los métodos externos se crean acá
     methods: {
-            actualizarNombre () {
-        this.nombre = 'Matias',
-        console.log(this.nombre)
+        actualizarNombre () {
+          this.nombre = 'Matias',
+          console.log(this.nombre)
+    },
+    redirigirBlog (){
+      this.$router.push('/blog')
     }
     }
 
