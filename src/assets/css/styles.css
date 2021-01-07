@@ -95,6 +95,18 @@ body {
     text-transform: uppercase;
 }
 
+.mensajeRed {
+    width: 21% !important;
+    text-align: center;
+    background: red;
+    color: white !important;
+}
+
+.mensajeGreen {
+    color: white !important;
+    background: green;
+}
+
 #menu a:hover,
 #menu .active {
     color: #09a330;

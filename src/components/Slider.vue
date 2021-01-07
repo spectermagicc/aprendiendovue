@@ -1,13 +1,23 @@
 <template>
-  <div id="slider" class="slider-big">
-    <h1>Bienvenido al Curso de Vue con Víctor Robles de victorroblesweb.es</h1>
-    <router-link to="/blog" class="btn-white">Ir al blog</router-link>
+  <div id="slider" :class="{
+    'slider-big': home,
+    'slider-small': !home
+    }">
+    <h1>{{ texto }}</h1>
+    <router-link to="/blog" class="btn-white"  v-if="home">
+      Ir al blog
+    </router-link>
   </div>
 </template>
 
 <script>
 export default {
-    name : 'Slider'
+  name: "Slider",
+  props: [
+    "texto", //recibo la props desde blog.vue
+    "home", //recibo showBtn para mostrar el botón
+    
+  ],
 };
 </script>
 
