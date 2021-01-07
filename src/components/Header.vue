@@ -27,6 +27,9 @@
           <li>
             <router-link active-class="active" to="/pagina">Pagina 2</router-link>
           </li>
+          <li>
+            <router-link active-class="active" to="/peliculas">Películas</router-link>
+          </li>
         </ul>
       </nav>
 

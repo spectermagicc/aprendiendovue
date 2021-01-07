@@ -8,6 +8,7 @@ import Blog from './components/Blog.vue';
 import Formulario from './components/Formulario.vue';
 import Pagina from './components/Pagina.vue';
 import Error from './components/Error.vue';
+import Peliculas from './components/Peliculas.vue';
 
 
 
@@ -26,6 +27,7 @@ const routes = [
     { path: '/pagina/:id?', name: 'pagina', component: Pagina },
     { path: '/formulario', component: Formulario },
     { path: '*', component: Error }, //cargará esta ruta cuando no coincida con las anteriores
+    { path: '/peliculas', name: "peliculas", component: Peliculas }
 
 ];
 
