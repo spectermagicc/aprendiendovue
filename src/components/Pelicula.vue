@@ -16,6 +16,10 @@
     </span>
     <a href="#">Leer más</a>
 
+    <input type="button" value="Marcar como favorita"
+      @click="pasarFavorita(pelicula)"
+    />
+
     <div class="clearfix"></div>
   </article>
 </template>
@@ -23,6 +27,11 @@
 <script>
 export default {
   name: "Pelicula",
-  props: ['pelicula']
+  props: ['pelicula'],
+  methods : {
+    pasarFavorita(pelicula) {
+      this.$emit('favorita', pelicula) //generación de evento
+    }
+  }
 };
 </script>

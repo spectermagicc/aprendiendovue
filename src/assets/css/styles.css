@@ -160,6 +160,11 @@ body {
     color: white;
 }
 
+.favorita {
+    color: rgb(180, 154, 3);
+    text-decoration: underline;
+}
+
 #slider.slider-small {
     height: 150px;
 }

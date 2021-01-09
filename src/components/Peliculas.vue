@@ -3,6 +3,10 @@
     <div class="center">
       <section id="content">
         <h2 class="subheader">Peliculas</h2>
+        <h3>Película favorita:</h3>
+        <div class="favorita" v-if="favorita">
+          <h2>{{favorita.title}}</h2>
+        </div>
         <p>
           En esta sección aplicaremos Binding Condicionales para el año de las
           películas
@@ -12,7 +16,7 @@
 
         <div v-for="pelicula in peliculas" v-bind:key="pelicula.title">
           <div id="articles">
-            <Pelicula :pelicula="pelicula" />
+            <Pelicula :pelicula="pelicula" v-on:favorita="ReciboPeliculaFavorita"/>
             <!--Envío de props desde el padre al hijo-->
           </div>
         </div>
@@ -34,8 +38,17 @@ export default {
     Sidebar
     
   },
-  data() {
+
+  methods : {
+    ReciboPeliculaFavorita(favorita){
+      this.favorita = favorita;
+    }
+  },
+
+  data() {    
     return {
+      favorita: null,
+
       peliculas: [
         {
           title: "Barman vs Superman",
