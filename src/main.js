@@ -17,7 +17,8 @@ Vue.config.productionTip = false
 
 //Agregando las rutas
 Vue.use(VueRouter);
-Vue.use(Vuelidate)
+Vue.use(Vuelidate);
+Vue.use(require('vue-moment'));
 
 const routes = [
     { path: '/home', component: LastArticles },

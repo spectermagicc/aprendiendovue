@@ -6,34 +6,7 @@
         <h1 class="subheader">Blog</h1>
 
         <div id="articles" v-if="articles">
-          <article
-            v-for="article in articles"
-            v-bind:key="article._id"
-            class="article-item"
-          >
-            <div class="image-wrap">
-              <img
-                :src="article.image"
-                :alt="article.title"
-                v-if="article.image"
-              />
-
-              <img
-                :src="'../src/assets/logo.png'"
-                :alt="article.title"
-                v-if="!article.image"
-              />
-            </div>
-
-            <h2>{{article.title}}</h2>
-
-            <span class="date"> Hace 5 minutos </span>
-            <a href="#">Leer más</a>
-
-            <div class="clearfix"></div>
-          </article>
-
-          <!--AÑADIR ARTICULOS VIA JS-->
+          <Articles :articles="articles"></Articles>
         </div>
       </section>
       <Sidebar />
@@ -46,6 +19,7 @@
 import Sidebar from "./Sidebar.vue";
 import Slider from "./Slider.vue";
 import axios from "axios";
+import Articles from './Articles.vue';
 
 export default {
   name: "Blog",
@@ -53,6 +27,7 @@ export default {
   components: {
     Sidebar,
     Slider,
+    Articles
   },
 
   mounted() {
