@@ -18,7 +18,7 @@
 
         <h2>{{ article.title }}</h2>
 
-        <span class="date"> Hace 5 minutos </span>
+        <span class="date">{{article.date | moment("dddd DDD, MMMM, YYYY - hh:mm")}}</span>
         <a href="#">Leer más</a>
 
         <div class="clearfix"></div>

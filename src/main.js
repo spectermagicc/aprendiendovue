@@ -10,6 +10,7 @@ import Formulario from './components/Formulario.vue';
 import Pagina from './components/Pagina.vue';
 import Error from './components/Error.vue';
 import Peliculas from './components/Peliculas.vue';
+import Search from './components/Search.vue';
 
 
 
@@ -18,7 +19,13 @@ Vue.config.productionTip = false
 //Agregando las rutas
 Vue.use(VueRouter);
 Vue.use(Vuelidate);
-Vue.use(require('vue-moment'));
+
+
+const moment = require('moment');
+require('moment/locale/es')
+Vue.use(require('vue-moment'), {
+    moment
+});
 
 const routes = [
     { path: '/home', component: LastArticles },
@@ -30,7 +37,8 @@ const routes = [
     { path: '/pagina/:id?', name: 'pagina', component: Pagina },
     { path: '/formulario', component: Formulario },
     { path: '*', component: Error }, //cargará esta ruta cuando no coincida con las anteriores
-    { path: '/peliculas', name: "peliculas", component: Peliculas }
+    { path: '/peliculas', name: "peliculas", component: Peliculas },
+    { path: '/search/:searchString', component: Search }
 
 ];
 
