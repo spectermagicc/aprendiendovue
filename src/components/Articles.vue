@@ -7,8 +7,14 @@
         class="article-item"
       >
         <div class="image-wrap">
-          <img :src="article.image" :alt="article.title" v-if="article.image" />
-
+          
+          <router-link :to="{ name: 'article', params: { id: article._id } }">
+            <img
+              :src="article.image"
+              :alt="article.title"
+              v-if="article.image"
+            />
+          </router-link>
           <img
             :src="'../src/assets/logo.png'"
             :alt="article.title"
@@ -16,22 +22,22 @@
           />
         </div>
 
-        <h2>{{ article.title }}</h2>
+        <router-link :to="{ name: 'article', params: { id: article._id } }">
+          <h2>{{ article.title }}</h2>
+        </router-link>
 
-        <span class="date">{{article.date | moment("dddd DDD, MMMM, YYYY - hh:mm")}}</span>
+        <span class="date">{{
+          article.date | moment("dddd DDD, MMMM, YYYY - hh:mm")
+        }}</span>
         <a href="#">Leer más</a>
 
         <div class="clearfix"></div>
       </article>
     </div>
 
-    <div v-else-if="articles.length < 1">
-      No hay artículos para mostrar
-    </div>
+    <div v-else-if="articles.length < 1">No hay artículos para mostrar</div>
 
-    <div v-else>
-      Cargando...
-    </div>
+    <div v-else>Cargando...</div>
   </section>
 </template>
 

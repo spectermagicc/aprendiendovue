@@ -93,6 +93,7 @@ body {
 .mensajeDanger {
     color: red;
     text-transform: uppercase;
+    font-weight: 600;
 }
 
 .mensajeRed {
@@ -245,6 +246,7 @@ body {
 }
 
 input[type="text"],
+input[type="file"],
 textarea {
     width: 100%;
     min-height: 30px;

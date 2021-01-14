@@ -1,6 +1,6 @@
 <template>
   <div class="general">
-    <Slider texto="Búsqueda" />
+    <Slider :texto="`Búsqueda: ${searchString}`" />
     <div class="center">
       <section id="content">
         <h1 class="subheader">Artículos encontrados</h1>
@@ -35,19 +35,20 @@ export default {
   },
 
   mounted() {
-    const searchString = this.$route.params.searchString;
-    this.getArticlesBySearch(searchString);
+    this.searchString = this.$route.params.searchString;
+    this.getArticlesBySearch(this.searchString);
   },
 
   data() {
     return {
       articles: [],
+      searchString: null //lo declaro dentro de data para poder usarlo como una variable dentro del programa
     };
   },
 
   methods: {
     getArticlesBySearch(searchString) {
-      axios.get("http://localhost:3900/api/search/" + searchString).then((res) => {
+      axios.get(`http://localhost:3900/api/search/${searchString}`).then((res) => {
         if (res.data.status == "success") {
           (this.articles = res.data.articles), console.log(this.articles);
         }
