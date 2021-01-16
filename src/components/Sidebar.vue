@@ -29,13 +29,9 @@ export default {
 
     methods: {
         goSearch (){
-            this.$router.push(`/search/${this.searchString}`)
+            this.$router.push(`/redirect/${this.searchString}`)
         }
     }
 
 }
 </script>
-
-<style scoped>
-
-</style>

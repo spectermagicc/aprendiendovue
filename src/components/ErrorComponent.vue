@@ -16,7 +16,7 @@ import Sidebar from './Sidebar.vue';
 
 export default {
   //nombre del componente
-  name: "Error",
+  name: "ErrorComponent",
   components : {
     Sidebar
   }

@@ -3,18 +3,16 @@
     <div id="articlesList" v-if="articles && articles.length >= 1">
       <article
         v-for="article in articles"
-        v-bind:key="article._id"
+        :key="article._id"
         class="article-item"
       >
         <div class="image-wrap">
-          
-          <router-link :to="{ name: 'article', params: { id: article._id } }">
             <img
-              :src="article.image"
+              :src="`${url}get-image/${article.image}`"
               :alt="article.title"
               v-if="article.image"
             />
-          </router-link>
+
           <img
             :src="'../src/assets/logo.png'"
             :alt="article.title"
@@ -26,10 +24,11 @@
           <h2>{{ article.title }}</h2>
         </router-link>
 
-        <span class="date">{{
-          article.date | moment("dddd DDD, MMMM, YYYY - hh:mm")
-        }}</span>
-        <a href="#">Leer más</a>
+        <span class="date">
+          {{ article.date | moment("dddd DDD, MMMM, YYYY - hh:mm") }}
+        </span>
+        
+        <router-link :to="{name: 'article', params: {id: article._id}}">Leer más</router-link>
 
         <div class="clearfix"></div>
       </article>
@@ -42,8 +41,16 @@
 </template>
 
 <script>
+import Global from '../Global';
+
 export default {
   name: "Articles",
   props: ["articles"],
+
+  data(){
+    return {
+      url: Global.url
+    }
+  }
 };
 </script>

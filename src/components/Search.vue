@@ -3,6 +3,7 @@
     <Slider :texto="`Búsqueda: ${searchString}`" />
     <div class="center">
       <section id="content">
+
         <h1 class="subheader">Artículos encontrados</h1>
 
         <div id="articles" v-if="articles">
@@ -12,6 +13,7 @@
         <div v-else>
             <h2>No hay artículos que coincidan con tu búsqueda</h2>
         </div>
+
       </section>
       <Sidebar />
       <div class="clearfix"></div>
@@ -24,6 +26,7 @@ import Sidebar from "./Sidebar.vue";
 import Slider from "./Slider.vue";
 import axios from "axios";
 import Articles from './Articles.vue';
+import Global from '../Global';
 
 export default {
   name: "Search",
@@ -41,6 +44,7 @@ export default {
 
   data() {
     return {
+      url: Global.url,
       articles: [],
       searchString: null //lo declaro dentro de data para poder usarlo como una variable dentro del programa
     };
@@ -48,10 +52,14 @@ export default {
 
   methods: {
     getArticlesBySearch(searchString) {
-      axios.get(`http://localhost:3900/api/search/${searchString}`).then((res) => {
+
+      axios.get(`${this.url}search/${searchString}`).then((res) => {
+
         if (res.data.status == "success") {
-          (this.articles = res.data.articles), console.log(this.articles);
+          (this.articles = res.data.articles);
+          
         }
+
       });
     },
   },

@@ -50,7 +50,7 @@
 
 <script>
 import Slider from "./Slider.vue";
-import articleModel from "../models/articleModel";
+import Article from "../models/Article";
 import axios from "axios";
 import { required } from "vuelidate/lib/validators";
 
@@ -64,7 +64,7 @@ export default {
   data() {
     return {
       //instanciamos un nuevo objeto de clase articleModel
-      article: new articleModel("", "", null, ""),
+      article: new Article("", "", null, ""),
 
       submitted: false,
 

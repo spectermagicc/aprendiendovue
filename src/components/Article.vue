@@ -4,12 +4,13 @@
     <div class="center">
       <section id="content">
         <article class="article-item article-detail" v-if="article">
-          <div class="image-wrap">
+
+          <div class="image-wrap" v-if="article.image">
             <img
-              :src="article.image"
+              :src="`${url}get-image/${article.image}`"
+
               :alt="article.title"
-              v-if="article.image"
-            />
+              v-if="article.image"/>
           </div>
 
           <h1 class="subheader">{{ article.title }}</h1>
@@ -31,6 +32,8 @@
 import Slider from "./Slider.vue";
 import Sidebar from "./Sidebar.vue";
 import axios from "axios";
+import Global from '../Global';
+import swal from 'sweetalert';
 
 export default {
   name: "Article",
@@ -42,7 +45,7 @@ export default {
 
   data() {
     return {
-      url: "http://localhost:3900/api/",
+      url: Global.url,
       article: null,
     };
   },
@@ -53,15 +56,43 @@ export default {
   },
 
   methods: {
+
     getArticle(articleId) {
       axios
-        .get(`http://localhost:3900/api/article/${articleId}`)
-        .then((res) => {
+        .get(`${this.url}article/${articleId}`).then((res) => {
+
           if (res.data.status == "success") {
             this.article = res.data.article;
+
           }
         });
     },
-  },
-};
+
+    deleteArticle (articleId){
+
+      swal({
+        title: `¿Deseas borrar este artículo?`,
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true
+
+      }).then(willDelete => {
+        if(willDelete){
+          axios.delete(`${this.url}article/${articleId}`).then(() => {
+
+            swal(
+              'Artículo borrado',
+              'El artículo ha sido borrado correctamente',
+              'success'
+            );
+              this.$route.push('/blog');
+
+          });
+        } else {
+          swal('No has borrado nada')
+        }
+      });
+    }
+  }
+}
 </script>
